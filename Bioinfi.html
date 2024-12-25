@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .wrapper {
+            width: 85%;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .owner-n {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0dff00;
+            text-shadow: 0 0 10px #0dff00, 0 0 20px #0dff00, 0 0 30px #0dff00;
+        }
+
+        .top-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .site-logo {
+            width: 320px;
+            margin: 20px auto;
+            display: block;
+            border: 2px solid #0dff00;
+        }
+        
+        .site-logoo {
+            width: 200.5px;
+            margin: 70px auto;
+            display: block;
+            
+        }
+
+        .owner-name {
+            font-size: 40px;
+            font-weight: bold;
+            color: #0dff00;
+            text-shadow: 0 0 10px #0dff00, 0 0 20px #0dff00, 0 0 30px #0dff00;
+        }
+
+        /* Hacker Terminal Styles */
+        .hacker-console {
+            background-color: #1a1a1a;
+            color: #0dff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(13, 255, 0, 0.7);
+            border: 8px solid #0dff00;
+        }
+
+        .command-line {
+            color: #ff8000;
+        }
+
+        .output-line {
+            font-weight: bold;
+            animation: rainbow-text 10s ease-in-out infinite;
+        }
+
+        .output-line:nth-child(even) {
+            animation: rainbow-text-reverse 10s ease-in-out infinite;
+        }
+
+        .cursor-effect {
+            display: inline-block;
+            width: 12px;
+            height: 20px;
+            background-color: #0dff00;
+            animation: blink-effect 0.8s infinite;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .terminal-btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 4px 125px;
+            margin: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid #0dff00;
+            box-shadow: 0 0 15px rgba(13, 255, 0, 0.7);
+        }
+
+        .terminal-btn:hover {
+            background-color: #ff007f;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
+        }
+
+        .footer-info {
+            text-align: center;
+            margin-top: 50px;
+            color: #ff007f;
+            text-shadow: 0 0 12px #ff007f, 0 0 24px #ff007f, 0 0 36px #ff007f;
+        }
+
+        .footer-info a {
+            color: #ff007f;
+            text-decoration: none;
+            text-shadow: 0 0 12px #ff007f, 0 0 24px #ff007f, 0 0 36px #ff007f;
+        }
+
+        @keyframes blink-effect {
+            50% {
+                background-color: transparent;
+            }
+        }
+
+        @keyframes rainbow-text {
+            0% { color: #ff007f; }
+            14% { color: #ff8000; }
+            28% { color: #ffff00; }
+            42% { color: #80ff00; }
+            57% { color: #00ff80; }
+            71% { color: #00ffff; }
+            85% { color: #8000ff; }
+            100% { color: #ff007f; }
+        }
+
+        @keyframes rainbow-text-reverse {
+            0% { color: #ff007f; }
+            14% { color: #8000ff; }
+            28% { color: #00ffff; }
+            42% { color: #00ff80; }
+            57% { color: #80ff00; }
+            71% { color: #ffff00; }
+            85% { color: #ff8000; }
+            100% { color: #ff007f; }
+        }
+        
+        .site-mmmm {
+            display: block;
+            border: 3px solid #0dff00;
+        }
+        .btn-info {
+            background-color: #00ff00;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+        }
+        button {
+            background: #00ff00;
+            color: #00ff00;
+            padding: 6px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 7px 0;
+            width: 70%;
+            font-size: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.5);
+        }
+        butto {
+            background: #00ff00;
+            color: #00ff00;
+            padding: 6px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 7px 0;
+            width: 100%;
+            font-size: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.5);
+        }
+
+
+       
+       
+    </style>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link
+      rel=""
+      href=""
+      type="image/x-icon"
+    />
+
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href=""
+      crossorigin=""
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <title>Home || deXcoder9_</title>
+  </head>
+  <body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav extra-nav">
+        <a href="#" class="nav__logo">
+          <h3 class="nav__name">HARES</h3>
+          <ul class="nav__list">
+               <button class="btn-info"><a href="#home" class="nav__link active-link">Home</a></div></button>
+            </li>
+            </li>
+           
+            <button class="btn-info">
+              <a href="#projects" class="nav__link">Projects</a></button>
+            </li>
+            <button class="btn-info">
+              <a href="#contact" class="nav__link">Contact Me</a></button>
+            </li>
+          </ul>
+
+          <!-- Close button -->
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+
+        <div class="nav__buttons">
+          <!-- Theme button -->
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+          <!-- Toggle button -->
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-4-line"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+      <!--==================== HOME ====================-->
+      <section class="home section" id="home">
+        <div class="home__container container grid">
+          <h1 class="owner-n">
+            HARES HOSSIN TANVIR <br />
+            
+          </h1>
+              <article class="projects__card">
+            <div class="projects__image">
+              <img class="site-logo" src="https://k.top4top.io/p_3260sxvcn0.jpg" alt="Logo">
+              <div class="home__shadow"></div>
+
+              <div class="geometric-box"></div>
+            </div>
+
+            <div class="home__social">
+              <a
+                href="https://www.#.com"
+                target="_blank"
+                class="home__social-link"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="home__social-link"
+              >
+                <i class="ri-linkedin-box-line"></i>
+              </a>
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="home__social-link"
+              >
+                <i class="ri-github-line"></i>
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="home__social-link"
+              >
+                <i class="ri-draft-line"></i>
+              </a>
+            </div>
+          </div>
+          <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Frontend Development:</f> <br />
+                 <b></b>
+                  with knowledge in web development,I
+              offer the best projects resulting in quality work.
+              </li>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!--==================== ABOUT ====================-->
+
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <b class="output-line">BIO DATA:</b> <br />
+                 <b></b>FATHER'S NAME  : MD NOOR HOSSIN<br />
+                 <b></b>MOTHER'S NAME  : PARVIN AKTHER<br />
+                 <b></b>DATE OF BIRTH  : 31/DEC/200X<br />
+                 <b></b>RELIGION  : MUSLIM<br />
+                 <b></b>NATIONALIST : BANGLADESHI <br />
+                 <b></b>BLOOD GROUP  : B+ <br />
+                 <b></b>HEIGHT : 5'7 <br />
+                 <b></b>SISTER : 2/1MARRIED <br />
+                 <b></b>E-MAIL  : hossenhares254@gmail.com <br />
+                 <b></b>ADDRESS: BAKOLIA KB AMAN ALI     ROADE,CHATTAGANG,BANGLADESH <br />
+                 <b></b>
+              </li>
+            </ul>
+            
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Education:</f> <br />
+                 <b></b>
+                Praimary School Certificate (PSC2016)
+                Junior School Certificate (JSC2019)
+                Secondary School Certificate (SSC2022)               
+                HIGH School Certificate (HSC2024)
+              </li>
+            </ul>
+
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <b class="output-line">My Skills Are:</b>SOCIAL MEDIS EXPERT,RECOVARY EXCEPT,TERMUX EXCEPT, FACEBOOK SECURITY,CRACING,HTML,PYTHON
+              </li>
+            </ul>
+             <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Personal Statement:</f> <br />
+                 <b></b>
+               I am Hares Hossen, a
+                dedicated frontend developer with a passion for creating
+                user-friendly and visually appealing websites. As a student of A
+                Bakolia High School, Chowkbazer Chattrogram, I am pursuing my
+                HSC, which I aim to complete in 2024. My goal is to leverage my
+                skills and creativity to deliver exceptional web experiences and
+                ensure client satisfaction in every project I undertake.
+              </li>
+            </ul>
+
+            <div class="about__buttons">
+              <a href="#contact" class="button">
+                <i class="ri-send-plane-line"></i>Contact Me
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="button__ghost"
+              >
+                <i class="ri-linkedin-box-line"></i>
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                class="resume__button button"
+                download="resume"
+                id="downloadButton"
+                target="_blank"
+              >
+                <i class="ri-file-download-line"></i> Resume
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--==================== SERVICES ====================-->
+      <section class="services section">
+        <h2 class="owner-n">
+          <span>My Approach.</span>
+        </h2>
+        
+         <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Planning & Strategy:</f> <br />
+                 <b></b>
+                We'll collaborate to map out your website's goals, target
+                audience, and key functionalities. We'll discuss things like
+                site structure, navigation and content requirements.
+              </li>
+            </ul>
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Development & Progress Update:</f> <br />
+                 <b></b>
+                 Once we agree on the plan, I cue my lofi playlist and dive into
+                coding. From initial sketches to polished code, I keep you
+                updated every step of the way.
+              </li>
+            </ul>
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Development & Progress Update:</f> <br />
+                 <b></b>
+                 Once we agree on the plan, I cue my lofi playlist and dive into
+                coding. From initial sketches to polished code, I keep you
+                updated every step of the way.
+              </li>
+            </ul>
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line">Development & Launch:</f> <br />
+                 <b></b>
+                  This is where the magic happens! Based on the approved design,
+                I'll translate everything into functional code, building your
+                website from the ground up.
+              </li>
+            </ul>
+          </article>      
+      </section>
+
+      <!--==================== PROJECTS ====================-->
+      <section class="projects section" id="projects">
+        <h2 class="section__title-2">
+          <span class="owner-n">>Projects.</span>
+        </h2>
+
+        <div class="projects__container container grid">
+          <!-- Projects card -->
+          <article class="projects__card">
+            <div class="projects__image">
+              <img class="site-logo"
+                src="https://a.top4top.io/p_3281gosmn1.jpg"
+                alt="project-image"
+                class="projects__img"
+              />
+
+              <a
+                href="http://github.com/hares.jr"
+                class="projects__button button"
+                target="_blank"
+              >
+                <i class="ri-arrow-right-up-line"></i>
+              </a>
+            </div>
+
+            <div class="projects__content">
+              
+              <h2 class="owner-n">Hotel Web</h2>
+              <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line"></f>
+                 A user-friendly hotel booking website allowing seamless room
+                reservations, showcasing available rooms, amenities, prices, and
+                secure online payments for a hassle-free experience.
+              </li>
+            </ul>
+            </div>
+
+            <div class="projects__buttons">
+              <a
+                href="http://github.com/hares.jr"
+                target="_blank"
+                class="projects__link"
+              >
+                <i class="ri-github-line"></i> View
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="projects__link"
+              >
+                <i class="ri-live-line"></i> View
+              </a>
+            </div>
+          </article>
+
+          <article class="projects__card">
+            <div class="projects__image">
+              <img class="site-logo" src="https://i.top4top.io/p_3281whzy71.jpg"
+                alt="project-image"
+                class="projects__img"
+              />
+
+              <a
+                href="http://github.com/hares.jr"
+                class="projects__button button"
+                target="_blank"
+              >
+                <i class="ri-arrow-right-up-line"></i>
+              </a>
+            </div>
+
+            <div class="projects__content">
+              
+              <h2 class="owner-n">Typing Master</h2>
+              <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line"></f>
+                 A fun and interactive typing game website where players improve
+                their typing skills by pressing displayed keys correctly and
+                avoid losing lives by pressing wrong keys.
+              </li>
+            </ul>
+            </div>
+
+            <div class="projects__buttons">
+              <a
+                href="http://github.com/hares.jr"
+                target="_blank"
+                class="projects__link"
+              >
+                <i class="ri-github-line"></i> View
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="projects__link"
+              >
+                <i class="ri-live-line"></i> View
+              </a>
+            </div>
+          </article>
+
+          <article class="projects__card">
+            <div class="projects__image">
+              <img class="site-logo" src="https://k.top4top.io/p_3281g4lob1.jpg"
+                alt="project-image"
+                class="projects__img"
+              />
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                class="projects__button button"
+              >
+                <i class="ri-arrow-right-up-line"></i>
+              </a>
+            </div>
+
+            <div class="projects__content">
+            
+              <h2 class="owner-n">Real State</h2>
+              <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line"></f>
+                 A property booking website enabling users to effortlessly book
+                accommodations, providing real-time availability, secure
+                transactions, and personalized search filters for a seamless
+                booking experience.
+              </li>
+            </ul>        
+            </div>
+
+            <div class="projects__buttons">
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="projects__link"
+              >
+                <i class="ri-github-line"></i> View
+              </a>
+
+              <a
+                href="https://www.facebook.com/Hares.JR"
+                target="_blank"
+                class="projects__link"
+              >
+                <i class="ri-live-line"></i> View
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!--==================== CONTACT ====================-->
+      <section class="contact section" id="contact">
+        <div class="contact__container grid">
+          <div class="contact__data">
+            <h2 class="section__title-2">
+              <span class="owner-n">Contact Me</span>
+            </h2>
+            <ul class="about__list">
+              <li class="about__item skill-set">
+                <f class="output-line"></f>
+                <p>I will read all emails.Send me any message you want and I'll get
+              back at you.<br />
+              <li class="about__item skill-set">
+              I need your <b>Name</b> and <b>Email Address</b>, but you won't
+              receive anything other than you reply.
+            </p>
+              </li>
+            </ul>
+
+            <div class="geometric-box"></div>
+          </div>
+
+          <div class="contact__mail">
+            <h2 class="owner-n">Send Me A Message</h2>
+
+            <form action="" class="contact__form" id="contact-form">
+              <div class="contact__group">
+                <div class="contact__box">
+                  <input
+                    type="text"
+                    class="contact__input"
+                    id="name"
+                    name="user_name"
+                    required
+                    placeholder="First Name"
+                  />
+                  <label for="name" class="contact__label">First Name</label>
+                </div>
+
+                <div class="contact__box">
+                  <input
+                    type="email"
+                    class="contact__input"
+                    id="email"
+                    name="user_email"
+                    required
+                    placeholder="Email Address"
+                  />
+                  <label for="email" class="contact__label"
+                    >Email Address</label
+                  >
+                </div>
+
+                <div class="contact__box">
+                  <input
+                    type="text"
+                    class="contact__input"
+                    id="subject"
+                    name="user_subject"
+                    required
+                    placeholder="Subject"
+                  />
+                  <label for="subject" class="contact__label">Subject</label>
+                </div>
+                <div class="contact__box contact__area">
+                  <textarea
+                    name="user_message"
+                    id="message"
+                    class="contact__input"
+                    placeholder="Message"
+                  ></textarea>
+                  <label for="message" class="contact__label">Message</label>
+                </div>
+                <p class="contact__message" id="contact-message"></p>
+                <button class="button" type="submit">
+               SUBMIT<i class="butto">➡️📥</i>Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="contact__social">
+            <img
+              src="assets/img/curved-arrow.svg"
+              alt=""
+              class="contact__social-arrow"
+            />
+
+            <div class="contact__social-data">
+              <div>
+                <p class="contact__social-description-1">
+                  Does not send emails
+                </p>
+
+                <p class="contact__social-description-1">
+                  Write me on my social networks
+                </p>
+              </div>
+
+              <div class="contact__social-links">
+                <a
+                  href="https://tinyurl.com/domxide"
+                  class="contact__social-link"
+                >
+                  <i class="ri-facebook-circle-line"></i>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/"
+                  class="contact__social-link"
+                  target="_blank"
+                >
+                  <i class="ri-instagram-line"></i>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/Hares.JR"
+                  class="contact__social-link"
+                  target="_blank"
+                >
+                  <i class="ri-linkedin-box-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+      <div class="footer__container container grid">
+        <ul class="footer__links">
+          <li>
+            <a href="#home" class="footer__link">Home</a>
+          </li>
+
+          <li>
+            <a href="#about" class="footer__link">About</a>
+          </li>
+
+          <li>
+  
